@@ -1,17 +1,13 @@
-#define LED 13
-
-volatile int estado = LOW;
-
 void setup() {
-  pinMode(LED, OUTPUT);
-  attachInterrupt(0, cambia, RISING);
+  Serial.begin(9600);
+  Keyboard.begin();
 }
 
 void loop() {
-  digitalWrite(LED, estado=!estado);
-  delay(2000);
-}
-
-void cambia() {
-  digitalWrite(LED, estado=!estado);
+  char letra;
+  if (Serial.available() > 0) {
+    letra = Serial.read();
+    if (letra == 'z')	Keyboard.write('a');
+    else	Keyboard.write(letra+1);
+  }  
 }

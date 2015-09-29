@@ -1,8 +1,7 @@
-void setup() {
-  Mouse.begin();
-}
-
-void loop() {
-  Mouse.move(random(10)-5, random(10)-5, 0);
-  delay(10);
-}
+void setup() { 
+  pinMode(9,OUTPUT);
+} 
+ 
+void loop() { 
+  analogWrite(9,200);
+} 

@@ -1,28 +1,9 @@
-#include <Metro.h>
-
-#define PARPADEO_OK 	1000	// 1 segundo 
-#define PARPADEO_ERR 	50	// 50 ms
-#define LED 13
-
-boolean estado = LOW;
-Metro MetroEstado = Metro(PARPADEO_OK); // Creamos objeto tipo Metro
-
-void setup() {
-  pinMode(LED,OUTPUT);
-  digitalWrite(LED,estado);
-  Serial.begin(9600);
-}
-
-void loop() {
-  if (MetroEstado.check()) {
-    estado ? estado=LOW: estado=HIGH;   
-    digitalWrite(LED,estado);
-  }
+extern int __bss_end;
+extern void *__brkval;
   
-  if (Serial.available()) {
-    if (Serial.read() == 'x')
-      MetroEstado.interval(PARPADEO_ERR);
-    else
-      MetroEstado.interval(PARPADEO_OK);
-  }
+int memoryFree(){
+    int freeValue;
+    if((int)__brkval == 0) freeValue = ((int)&freeValue) - ((int)&__bss_end);
+    else freeValue = ((int)&freeValue) - ((int)__brkval);
+    return freeValue;
 }

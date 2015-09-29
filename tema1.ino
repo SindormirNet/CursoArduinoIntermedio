@@ -1,17 +1,21 @@
-#define INTERVALO 500
-#define LED 13
+#include <EEPROM.h>
 
-unsigned long millisAnterior = 0;
+#define PULSADOR 2
 
-void setup() {
-  pinMode(LED, OUTPUT);
+void setup(){
+  Serial.begin(9600);  
+
+  if (digitalRead(PULSADOR)) {
+    Serial.println("Reseteando");
+    EEPROM.write(10, 0);
+  }
 }
 
 void loop() {
-  if(millis() - millisAnterior > INTERVALO) {
-    millisAnterior = millis();  
-    digitalWrite(LED, !digitalRead(LED));
-  }
-
-  //Aquí mi código principal
+  byte numero;
+  
+  numero=EEPROM.read(10);
+  Serial.println(numero++);
+  EEPROM.write(10, numero);  
+  delay(1000);
 }
