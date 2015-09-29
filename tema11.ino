@@ -6,7 +6,7 @@
 Stepper stepper28byj48(PASOS, 8, 10, 9, 11);
 
 void setup() {
-  stepper28byj48.setSpeed(200);
+  stepper28byj48.setSpeed(200); //RPM
 }
 
 void loop() {

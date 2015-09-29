@@ -14,7 +14,7 @@ void setup(){
 void loop() {
   byte numero;
   
-  numero=EEPROM.read(10);
+  numero = EEPROM.read(10);
   Serial.println(numero++);
   EEPROM.write(10, numero);  
   delay(1000);

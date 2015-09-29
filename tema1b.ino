@@ -1,5 +1,4 @@
 #include <EEPROM.h>
-
 #define POS_INI 0
 
 char cadena[]="sindormir.net";
@@ -11,16 +10,17 @@ void setup(){
   
   for (int i = POS_INI; i < sizeof cadena; i++)
     EEPROM.write(i, cadena[i]);
-  
-  delay(100);
 }
 
 void loop() {
   char lectura[20];
+  int i = 0;
   
   Serial.print("Leyendo de EEPROM: ");
-  for (int i = POS_INI; i < sizeof cadena; i++)
-    lectura[i]=EEPROM.read(i);
+  do {  
+	lectura[i] = EEPROM.read(POS_INI + i);  
+	i++;
+  } while (lectura[i-1] != '\0');
     
   Serial.println(lectura);
   

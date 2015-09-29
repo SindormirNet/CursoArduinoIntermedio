@@ -15,4 +15,4 @@ void loop() {
     servo1.write(pos);
     delay(15);
   } 
-} 
+}
