@@ -1,28 +1,23 @@
 #include <EEPROM.h>
-#define POS_INI 0
+#define PULSADOR 2
+#define POS_EEPROM 100
 
-char cadena[]="sindormir.net";
+void setup() {
+  char texto[] = "sindormir.net";
 
-void setup(){
   Serial.begin(9600);
-  Serial.print("Escribiendo en EEPROM: ");
-  Serial.println(cadena);
-  
-  for (int i = POS_INI; i < sizeof cadena; i++)
-    EEPROM.write(i, cadena[i]);
+  Serial.print("Escribiendo en EEPROM ");
+  Serial.println(texto);
+
+  EEPROM.put(POS_EEPROM, texto);
 }
 
 void loop() {
   char lectura[20];
-  int i = 0;
-  
-  Serial.print("Leyendo de EEPROM: ");
-  do {  
-	lectura[i] = EEPROM.read(POS_INI + i);  
-	i++;
-  } while (lectura[i-1] != '\0');
-    
-  Serial.println(lectura);
-  
-  while(1);
+
+  if (digitalRead(PULSADOR)==HIGH){
+    Serial.print("Leyendo de EEPROM: ");
+    EEPROM.get(POS_EEPROM, lectura);
+    Serial.println(lectura);
+  }
 }
