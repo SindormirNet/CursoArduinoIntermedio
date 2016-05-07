@@ -1,3 +1,5 @@
+#include <Keyboard.h>
+
 void setup() {
   Serial.begin(9600);
   Keyboard.begin();
