@@ -1,3 +1,5 @@
+#include <Mouse.h>
+
 void setup() {
   Mouse.begin();
 }
