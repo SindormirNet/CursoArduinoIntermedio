@@ -5,6 +5,6 @@ void setup() {
 }
 
 void loop() {
-  Mouse.move(random(10)-5, random(10)-5, 0);
+  Mouse.move(random(-5,6), random(-5, 6), 0);
   delay(10);
 }
