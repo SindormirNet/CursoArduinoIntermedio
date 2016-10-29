@@ -2,6 +2,7 @@
 
 void setup() {
   Mouse.begin();
+  randomSeed(analogRead(A5));
 }
 
 void loop() {
