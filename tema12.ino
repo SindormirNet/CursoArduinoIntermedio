@@ -13,6 +13,7 @@ byte sindormir[8] = {
 }; 
 
 void setup() {
+  lcd.createChar(0, sindormir);
   lcd.begin(16, 2); //16 columnas y 2 filas
   lcd.setCursor(0,0);
   lcd.write(byte(0)); 
