@@ -10,6 +10,7 @@ byte sindormir[8] = {
   B10001, 
   B10001, 
   B11111, 
+  B00000
 }; 
 
 void setup() {
