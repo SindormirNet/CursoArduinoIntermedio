@@ -12,6 +12,7 @@ void setup() {
 }
 
 void loop() {    
-  if(tecla.capacitiveSensor(MUESTRAS) > UMBRAL)
+  if(tecla.capacitiveSensor(MUESTRAS) > UMBRAL) {
     Serial.println("Ay!");
+  }
 }
