@@ -1,3 +1,7 @@
+#include <EEPROM.h>
+#define POS_LONG 104
+#define POS_SIGUIENTE_DATO 108 // ¡Debemos llevar la cuenta manualmente!
+
 void setup() {
   unsigned long mi_variable = 2.7182;
   Serial.begin(9600);
